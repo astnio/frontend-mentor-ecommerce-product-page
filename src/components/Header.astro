@@ -6,10 +6,21 @@ import ProfileButton from './ProfileButton.astro';
 ---
 
 <style>
+  header {
+    display: flex;
+    width: 100%;
+  }
+
   nav {
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    width: 100%;
+  }
+
+  nav :global(#cart-button) {
+    margin-left: auto;
   }
 </style>
 
