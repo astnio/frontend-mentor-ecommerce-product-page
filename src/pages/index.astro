@@ -1,27 +1,41 @@
 ---
 import Header from '../components/Header.astro';
 import Base from '../layouts/Base.astro';
+import ProductImageCollection from '../components/ProductImageCollection.astro';
 ---
+
+<style>
+  main {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+
+    margin-top: 4rem;
+  }
+</style>
 
 <Base>
   <Header />
 
-  <main>
-    <h2>Sneaker Company</h2>
-    <h1>Fall Limited Edition Sneakers</h1>
-    <p>
-      These low-profile sneakers are your perfect casual wear companion.
-      Featuring a durable rubber outer sole, they’ll withstand everything the
-      weather can offer.
-    </p>
-    <div>
+  <main class='max-width'>
+    <ProductImageCollection />
+    <div class='product-details'>
+      <h2>Sneaker Company</h2>
+      <h1>Fall Limited Edition Sneakers</h1>
+      <p>
+        These low-profile sneakers are your perfect casual wear companion.
+        Featuring a durable rubber outer sole, they’ll withstand everything the
+        weather can offer.
+      </p>
       <div>
-        <p>$125.00</p>
-        <p>50%</p>
+        <div>
+          <p>$125.00</p>
+          <p>50%</p>
+        </div>
+        <div>$250.00</div>
       </div>
-      <div>$250.00</div>
+      <div>0</div>
+      <button>Add to cart</button>
     </div>
-    <div>0</div>
-    <button>Add to cart</button>
   </main>
 </Base>

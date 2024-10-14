@@ -8,6 +8,7 @@ import ProfileButton from './ProfileButton.astro';
 <style>
   header {
     display: flex;
+    flex-direction: column;
     width: 100%;
   }
 
@@ -22,13 +23,23 @@ import ProfileButton from './ProfileButton.astro';
   nav :global(#cart-button) {
     margin-left: auto;
   }
+
+  hr {
+    width: 100%;
+    margin-top: 2rem;
+    border: none;
+
+    height: 1px;
+    background-color: #eee;
+  }
 </style>
 
-<header>
+<header class='max-width'>
   <nav>
     <Logo />
     <LinkList />
     <CartButton />
     <ProfileButton />
   </nav>
+  <hr />
 </header>
