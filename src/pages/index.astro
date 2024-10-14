@@ -1,34 +1,39 @@
 ---
-
+import Base from '../layouts/Base.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Frontend Mentor | E-commerce product page</title>
-	</head>
-	<body>
-		Collections
-		Men
-		Women
-		About
-		Contact
-	  
-		Sneaker Company
-	  
-		Fall Limited Edition Sneakers
-	  
-		These low-profile sneakers are your perfect casual wear companion. Featuring a 
-		durable rubber outer sole, they’ll withstand everything the weather can offer.
-	  
-		$125.00
-		50%
-		$250.00
-	  
-		0
-		Add to cart
-	</body>
-</html>
+<Base>
+  <header>
+    <nav>
+      <div>logo</div>
+      <ul>
+        <li><a href='/collections/'>Collections</a></li>
+        <li><a href='/collections/'>Men</a></li>
+        <li><a href='/collections/'>Women</a></li>
+        <li><a href='/collections/'>About</a></li>
+        <li><a href='/collections/'>Contact</a></li>
+      </ul>
+      <button>cart</button>
+      <button>profile</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Sneaker Company</h2>
+    <h1>Fall Limited Edition Sneakers</h1>
+    <p>
+      These low-profile sneakers are your perfect casual wear companion.
+      Featuring a durable rubber outer sole, they’ll withstand everything the
+      weather can offer.
+    </p>
+    <div>
+      <div>
+        <p>$125.00</p>
+        <p>50%</p>
+      </div>
+      <div>$250.00</div>
+    </div>
+    <div>0</div>
+    <button>Add to cart</button>
+  </main>
+</Base>
