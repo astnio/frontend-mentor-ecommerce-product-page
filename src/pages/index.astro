@@ -1,4 +1,5 @@
 ---
+import '/src/style/global.css';
 import Header from '../components/Header.astro';
 import ProductImageCollection from '../components/product_images/ProductImageCollection.astro';
 import Base from '../layouts/Base.astro';
@@ -12,6 +13,78 @@ import Base from '../layouts/Base.astro';
 
     margin-top: 4rem;
   }
+
+  .product-company {
+    font-size: 13px;
+    color: var(--clr-blue-600);
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    margin-bottom: 1rem;
+  }
+
+  .product-title {
+    font-size: 44px;
+    line-height: 100%;
+  }
+
+  .product-description {
+    color: var(--clr-blue-600);
+    font-size: 16px;
+    line-height: 150%;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-prices-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+  }
+
+  .product-current-price-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .product-current-price {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .product-discount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 51px;
+    height: 27px;
+
+    color: var(--clr-white);
+    font-weight: 700;
+
+    border-radius: 6pt;
+
+    background-color: var(--clr-blue-900);
+  }
+
+  .product-old-price {
+    font-weight: 16px;
+    color: var(--clr-blue-600);
+    font-weight: 700;
+
+    text-decoration: line-through;
+  }
+
+  .add-to-cart-buttons-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
 </style>
 
 <Base>
@@ -20,22 +93,24 @@ import Base from '../layouts/Base.astro';
   <main class='max-width'>
     <ProductImageCollection />
     <div class='product-details'>
-      <h2>Sneaker Company</h2>
-      <h1>Fall Limited Edition Sneakers</h1>
-      <p>
+      <h2 class='product-company'>Sneaker Company</h2>
+      <h1 class='product-title'>Fall Limited Edition Sneakers</h1>
+      <p class='product-description'>
         These low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they’ll withstand everything the
         weather can offer.
       </p>
-      <div>
-        <div>
-          <p>$125.00</p>
-          <p>50%</p>
+      <div class='product-prices-wrapper'>
+        <div class='product-current-price-wrapper'>
+          <p class='product-current-price'>$125.00</p>
+          <p class='product-discount'>50%</p>
         </div>
-        <div>$250.00</div>
+        <div class='product-old-price'>$250.00</div>
       </div>
-      <div>0</div>
-      <button>Add to cart</button>
+      <div class='add-to-cart-buttons-wrapper'>
+        <div>0</div>
+        <button>Add to cart</button>
+      </div>
     </div>
   </main>
 </Base>

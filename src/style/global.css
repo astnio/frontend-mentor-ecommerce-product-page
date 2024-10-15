@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Kumbh Sans';
+  src: url('/src/assets/fonts/kumbh_sans/KumbhSans-VariableFont_YOPQ\,wght.ttf');
+  font-style: normal;
+}
+
 :root {
   --clr-orange-500: hsl(26, 100%, 55%);
   --clr-orange-100: hsl(25, 100%, 94%);
@@ -9,6 +15,27 @@
 
   --clr-white: hsl(0, 0%, 100%);
   --clr-black-trans: rgba(0, 0, 0, 0.75);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 body {
