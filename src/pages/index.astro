@@ -3,6 +3,8 @@ import '/src/style/global.css';
 import Header from '../components/Header.astro';
 import ProductImageCollection from '../components/product_images/ProductImageCollection.astro';
 import Base from '../layouts/Base.astro';
+import NumberInput from '../components/inputs/NumberInput.astro';
+import Button from '../components/inputs/Button.astro';
 ---
 
 <style>
@@ -108,8 +110,8 @@ import Base from '../layouts/Base.astro';
         <div class='product-old-price'>$250.00</div>
       </div>
       <div class='add-to-cart-buttons-wrapper'>
-        <div>0</div>
-        <button>Add to cart</button>
+        <NumberInput />
+        <Button>Add to cart</Button>
       </div>
     </div>
   </main>
