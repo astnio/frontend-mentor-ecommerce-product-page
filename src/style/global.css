@@ -6,6 +6,7 @@
 
 :root {
   --clr-orange-500: hsl(26, 100%, 55%);
+  --clr-orange-200: #ffab6a;
   --clr-orange-100: hsl(25, 100%, 94%);
 
   --clr-blue-900: hsl(220, 13%, 13%);
