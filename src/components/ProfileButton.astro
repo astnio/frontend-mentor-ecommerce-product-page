@@ -2,4 +2,38 @@
 
 ---
 
-<button>profile</button>
+<style>
+  button {
+    border: none;
+    border-radius: 50%;
+
+    height: 50px;
+    width: 50px;
+
+    margin: 0;
+    padding: 0;
+
+    outline: 0px solid rgba(0, 0, 0, 0);
+
+    overflow: hidden;
+
+    transition: outline 0.1s ease-out;
+  }
+
+  button:hover {
+    cursor: pointer;
+    outline: 3px solid var(--clr-orange-500);
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<button>
+  <img
+    src='/src/assets/images/image-avatar.png'
+    alt=''
+  />
+</button>
