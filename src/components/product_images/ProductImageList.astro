@@ -1,6 +1,6 @@
 ---
 import ProductImageListItem from './ProductImageListItem.astro';
-const imageSources = [
+const imageThumbnailSources = [
   '/src/assets/images/image-product-1-thumbnail.jpg',
   '/src/assets/images/image-product-2-thumbnail.jpg',
   '/src/assets/images/image-product-3-thumbnail.jpg',
@@ -20,34 +20,61 @@ const imageSources = [
 <div class='product-item-list'>
   <ProductImageListItem
     active='true'
-    imageSource={imageSources[0]}
+    imageSource={imageThumbnailSources[0]}
   />
 
   <ProductImageListItem
     active='false'
-    imageSource={imageSources[1]}
+    imageSource={imageThumbnailSources[1]}
   />
 
   <ProductImageListItem
     active='false'
-    imageSource={imageSources[2]}
+    imageSource={imageThumbnailSources[2]}
   />
 
   <ProductImageListItem
     active='false'
-    imageSource={imageSources[3]}
+    imageSource={imageThumbnailSources[3]}
   />
 </div>
 
 <script defer>
   const listItems = document.querySelectorAll('.product-image-list-item');
+  const mainImage = document.getElementById('main-image');
+
+  const imageMainSources = [
+    '/src/assets/images/image-product-1.jpg',
+    '/src/assets/images/image-product-2.jpg',
+    '/src/assets/images/image-product-3.jpg',
+    '/src/assets/images/image-product-4.jpg',
+  ];
 
   let lastActiveItem = listItems[0];
+
+  function setMainImage(source) {
+    mainImage.src = source;
+  }
+
+  function getIndexOfItem(target) {
+    let index = 0;
+
+    for (let i = 0; i < listItems.length; i++) {
+      if (listItems[i] === target) {
+        index = i;
+        break;
+      }
+    }
+
+    return index;
+  }
 
   function handleOnItemClick(item) {
     lastActiveItem.setAttribute('data-active', 'false');
     item.setAttribute('data-active', 'true');
     lastActiveItem = item;
+    let index = getIndexOfItem(lastActiveItem);
+    setMainImage(imageMainSources[index]);
   }
 
   listItems.forEach((item) => {
