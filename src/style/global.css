@@ -35,22 +35,6 @@ p {
   padding: 0;
 }
 
-html {
-  font-family: 'Kumbh Sans', sans-serif;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 100vh;
-
-  margin: 0;
-  padding: 0;
-}
-
 .max-width {
   max-width: 1110px;
 }
