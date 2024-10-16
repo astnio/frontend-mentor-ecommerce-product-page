@@ -1,5 +1,5 @@
 ---
-
+const { active } = Astro.props;
 ---
 
 <style>
@@ -11,11 +11,22 @@
     border-radius: 10pt;
 
     background-color: #eee;
+
+    outline: 0px solid rgba(0, 0, 0, 0);
+
+    transition: outline 0.03s ease-out;
   }
 
   .product-image-list-item:hover {
     cursor: pointer;
   }
+
+  .product-image-list-item[data-active='true'] {
+    outline: 3px solid var(--clr-orange-500);
+  }
 </style>
 
-<div class='product-image-list-item'></div>
+<div
+  data-active={active}
+  class='product-image-list-item'>
+</div>

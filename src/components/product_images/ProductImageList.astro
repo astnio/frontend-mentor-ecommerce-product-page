@@ -12,8 +12,24 @@ import ProductImageListItem from './ProductImageListItem.astro';
 </style>
 
 <div class='product-item-list'>
-  <ProductImageListItem />
-  <ProductImageListItem />
-  <ProductImageListItem />
-  <ProductImageListItem />
+  <ProductImageListItem active='true' />
+  <ProductImageListItem active='false' />
+  <ProductImageListItem active='false' />
+  <ProductImageListItem active='false' />
 </div>
+
+<script defer>
+  const listItems = document.querySelectorAll('.product-image-list-item');
+
+  let lastActiveItem = listItems[0];
+
+  function handleOnItemClick(item) {
+    lastActiveItem.setAttribute('data-active', 'false');
+    item.setAttribute('data-active', 'true');
+    lastActiveItem = item;
+  }
+
+  listItems.forEach((item) => {
+    item.addEventListener('click', () => handleOnItemClick(item));
+  });
+</script>
