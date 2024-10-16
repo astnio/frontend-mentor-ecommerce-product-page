@@ -1,9 +1,13 @@
 ---
-const { active } = Astro.props;
+const { active, imageSource, imageAlt } = Astro.props;
 ---
 
 <style>
   .product-image-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
     max-width: 88px;
     min-height: 88px;
@@ -14,6 +18,8 @@ const { active } = Astro.props;
 
     outline: 0px solid rgba(0, 0, 0, 0);
 
+    overflow: hidden;
+
     transition: outline 0.03s ease-out;
   }
 
@@ -22,11 +28,24 @@ const { active } = Astro.props;
   }
 
   .product-image-list-item[data-active='true'] {
-    outline: 3px solid var(--clr-orange-500);
+    outline: 2px solid var(--clr-orange-500);
+  }
+
+  img {
+    max-width: 100%;
+    transition: opacity 0.03s ease-out;
+  }
+
+  .product-image-list-item[data-active='true'] > img {
+    opacity: 0.2;
   }
 </style>
 
 <div
   data-active={active}
   class='product-image-list-item'>
+  <img
+    src={imageSource}
+    alt={imageAlt}
+  />
 </div>

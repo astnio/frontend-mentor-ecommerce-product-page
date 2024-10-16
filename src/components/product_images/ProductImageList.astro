@@ -1,5 +1,11 @@
 ---
 import ProductImageListItem from './ProductImageListItem.astro';
+const imageSources = [
+  '/src/assets/images/image-product-1-thumbnail.jpg',
+  '/src/assets/images/image-product-2-thumbnail.jpg',
+  '/src/assets/images/image-product-3-thumbnail.jpg',
+  '/src/assets/images/image-product-4-thumbnail.jpg',
+];
 ---
 
 <style>
@@ -12,10 +18,25 @@ import ProductImageListItem from './ProductImageListItem.astro';
 </style>
 
 <div class='product-item-list'>
-  <ProductImageListItem active='true' />
-  <ProductImageListItem active='false' />
-  <ProductImageListItem active='false' />
-  <ProductImageListItem active='false' />
+  <ProductImageListItem
+    active='true'
+    imageSource={imageSources[0]}
+  />
+
+  <ProductImageListItem
+    active='false'
+    imageSource={imageSources[1]}
+  />
+
+  <ProductImageListItem
+    active='false'
+    imageSource={imageSources[2]}
+  />
+
+  <ProductImageListItem
+    active='false'
+    imageSource={imageSources[3]}
+  />
 </div>
 
 <script defer>
