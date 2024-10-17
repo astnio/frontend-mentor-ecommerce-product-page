@@ -10,6 +10,12 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
 ---
 
 <style>
+  .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .wrapper {
     position: relative;
     display: flex;
@@ -23,7 +29,9 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     width: 100%;
     min-height: 445px;
 
-    transition: outline 0.1s ease-out;
+    overflow: hidden;
+
+    transition: outline 0.25s ease-out;
   }
 
   .wrapper[data-is-overlay='false']:hover {
@@ -31,9 +39,19 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     outline: 2px solid var(--clr-orange-500);
   }
 
+  .wrapper[data-is-overlay='false']:hover > img {
+    transform: scale(1.05);
+  }
+
   img {
     max-width: 100%;
-    border-radius: 15pt;
+    /* border-radius: 15pt; */
+
+    transition: transform 0.25s ease-in-out;
+  }
+
+  button {
+    z-index: 200;
   }
 
   .btn-move-main-img {
@@ -80,9 +98,7 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
   }
 </style>
 
-<div
-  class='wrapper'
-  data-is-overlay={isOverlay.toString()}>
+<div class='container'>
   <button
     class='btn-move-main-img'
     id={isOverlay ? 'btn-move-main-img-left' : ''}
@@ -100,11 +116,15 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
       ></path></svg
     >
   </button>
-  <img
-    id={mainImageId}
-    src={images[0]}
-    alt=''
-  />
+  <div
+    class='wrapper'
+    data-is-overlay={isOverlay.toString()}>
+    <img
+      id={mainImageId}
+      src={images[0]}
+      alt=''
+    />
+  </div>
   <button
     class='btn-move-main-img'
     id={isOverlay ? 'btn-move-main-img-right' : ''}
