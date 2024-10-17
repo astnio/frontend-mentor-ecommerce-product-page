@@ -6,11 +6,15 @@ const images = [
   '/src/assets/images/image-product-4.jpg',
 ];
 
-const { mainImageId, canEnableOverlay } = Astro.props;
+const { mainImageId, isOverlay } = Astro.props;
 ---
 
-<style>
+<style define:vars={{ isOverlay }}>
   .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
     min-height: 445px;
 
@@ -32,6 +36,6 @@ const { mainImageId, canEnableOverlay } = Astro.props;
   />
 </div>
 
-<script defer define:vars={{ canEnableOverlay }}>
-  console.log(canEnableOverlay);
+<script defer define:vars={{ isOverlay }}>
+  console.log(isOverlay);
 </script>

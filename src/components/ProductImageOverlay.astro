@@ -1,0 +1,132 @@
+---
+import ProductImageCollection from './product_images/ProductImageCollection.astro';
+
+const overlayMainImageId = 'overlay-main-image';
+const overlayListItemNames = 'overlay-list-item';
+---
+
+<style>
+  .overlay-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 100;
+
+    pointer-events: all;
+    opacity: 1;
+    visibility: visible;
+
+    transition-property: opacity, visibility;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .image-collection-wrapper {
+    max-width: 100%;
+    z-index: 110;
+  }
+
+  .overlay-close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+    min-height: 28px;
+
+    border-radius: 50%;
+    border: none;
+
+    padding: 0.8rem;
+
+    margin-left: auto;
+    margin-bottom: 2rem;
+
+    background-color: transparent;
+  }
+
+  .overlay-close-button:hover {
+    cursor: pointer;
+  }
+
+  .overlay-close-button:hover > svg {
+    fill: var(--clr-orange-500);
+  }
+
+  svg {
+    transform: scale(2);
+    fill: var(--clr-white);
+
+    transition: fill 0.1s ease-out;
+  }
+
+  .overlay-wrapper[data-active='false'] {
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+</style>
+
+<div
+  id='overlay-wrapper'
+  class='overlay-wrapper'
+  data-active='true'>
+  <div id='overlay'></div>
+  <div class='image-collection-wrapper'>
+    <button
+      id='overlay-close-button'
+      class='overlay-close-button'>
+      <svg
+        width='14'
+        height='15'
+        xmlns='http://www.w3.org/2000/svg'
+        ><path
+          d='m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z'
+          fill='inherit'
+          fill-rule='evenodd'
+        ></path></svg
+      >
+    </button>
+    <ProductImageCollection
+      mainImageId={overlayMainImageId}
+      listItemNames={overlayListItemNames}
+      isOverlay='true'
+    />
+  </div>
+</div>
+
+<script defer>
+  const overlayWrapper = document.getElementById('overlay-wrapper');
+  const overlay = document.getElementById('overlay');
+  const closeButton = document.getElementById('overlay-close-button');
+
+  function closeOverlay() {
+    overlayWrapper.setAttribute('data-active', 'false');
+  }
+
+  function openOverlay() {
+    overlayWrapper.setAttribute('data-active', 'true');
+  }
+
+  overlay.addEventListener('click', closeOverlay);
+  closeButton.addEventListener('click', closeOverlay);
+</script>

@@ -4,6 +4,7 @@ import ProductImageCollection from '../components/product_images/ProductImageCol
 import Base from '../layouts/Base.astro';
 import NumberInput from '../components/inputs/NumberInput.astro';
 import Button from '../components/inputs/Button.astro';
+import ProductImageOverlay from '../components/ProductImageOverlay.astro';
 
 const normalMainImageId = 'main-image-normal';
 const normalListItemNames = 'product-item-normal';
@@ -100,8 +101,9 @@ const normalListItemNames2 = 'product-item-normal2';
     <ProductImageCollection
       mainImageId={normalMainImageId}
       listItemNames={normalListItemNames}
-      canEnableOverlay='false'
+      isOverlay='false'
     />
+    <ProductImageOverlay />
     <div class='product-details'>
       <h2 class='product-company'>Sneaker Company</h2>
       <h1 class='product-title'>Fall Limited Edition Sneakers</h1>

@@ -5,10 +5,10 @@ import ProductImageMain from './ProductImageMain.astro';
 // const normalMainImageId = 'main-image-normal';
 // const normalListItemNames = 'product-item-normal';
 
-const { mainImageId, listItemNames, canEnableOverlay } = Astro.props;
+const { mainImageId, listItemNames, isOverlay } = Astro.props;
 ---
 
-<style>
+<style define:vars={{ isOverlay }}>
   .product-image-collection {
     display: flex;
     flex-direction: column;
@@ -16,14 +16,24 @@ const { mainImageId, listItemNames, canEnableOverlay } = Astro.props;
 
     min-height: 565px;
     width: 100%;
+  }
+
+  .product-image-collection[data-is-overlay='false'] {
     max-width: 445px;
+  }
+
+  .product-image-collection[data-is-overlay='true'] {
+    max-width: 550px;
+    min-height: 722px;
   }
 </style>
 
-<div class='product-image-collection'>
+<div
+  data-is-overlay={isOverlay}
+  class='product-image-collection'>
   <ProductImageMain
     mainImageId={mainImageId}
-    canEnableOverlay={canEnableOverlay}
+    isOverlay={isOverlay}
   />
   <ProductImageList
     mainImageId={mainImageId}
