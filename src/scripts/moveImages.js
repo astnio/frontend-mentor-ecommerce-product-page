@@ -37,7 +37,10 @@ class ImagePicker {
   }
 
   static handleOnItemClick(list, image, e, isOverlay) {
-    const tracker = isOverlay ? this.overlayTracker : this.pageTracker;
+    let tracker = this.overlayTracker;
+    if (isOverlay === 'false') {
+      tracker = this.pageTracker;
+    }
     this.updateItem(tracker, list, image, e);
   }
 

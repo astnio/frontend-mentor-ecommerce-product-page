@@ -16,12 +16,19 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     align-items: center;
     justify-content: center;
 
+    outline: 2px solid rgba(0, 0, 0, 0);
+
+    border-radius: 15pt;
+
     width: 100%;
     min-height: 445px;
+
+    transition: outline 0.1s ease-out;
   }
 
   .wrapper[data-is-overlay='false']:hover {
     cursor: pointer;
+    outline: 2px solid var(--clr-orange-500);
   }
 
   img {
