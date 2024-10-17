@@ -6,7 +6,7 @@ const images = [
   '/src/assets/images/image-product-4.jpg',
 ];
 
-const { mainImageId } = Astro.props;
+const { mainImageId, canEnableOverlay } = Astro.props;
 ---
 
 <style>
@@ -31,3 +31,7 @@ const { mainImageId } = Astro.props;
     alt=''
   />
 </div>
+
+<script defer define:vars={{ canEnableOverlay }}>
+  console.log(canEnableOverlay);
+</script>

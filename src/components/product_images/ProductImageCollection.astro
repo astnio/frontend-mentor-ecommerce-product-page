@@ -5,7 +5,7 @@ import ProductImageMain from './ProductImageMain.astro';
 // const normalMainImageId = 'main-image-normal';
 // const normalListItemNames = 'product-item-normal';
 
-const { mainImageId, listItemNames } = Astro.props;
+const { mainImageId, listItemNames, canEnableOverlay } = Astro.props;
 ---
 
 <style>
@@ -21,7 +21,10 @@ const { mainImageId, listItemNames } = Astro.props;
 </style>
 
 <div class='product-image-collection'>
-  <ProductImageMain mainImageId={mainImageId} />
+  <ProductImageMain
+    mainImageId={mainImageId}
+    canEnableOverlay={canEnableOverlay}
+  />
   <ProductImageList
     mainImageId={mainImageId}
     listItemClassNames={listItemNames}
