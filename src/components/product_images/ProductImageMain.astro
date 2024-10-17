@@ -6,10 +6,10 @@ const images = [
   '/src/assets/images/image-product-4.jpg',
 ];
 
-const { mainImageId, isOverlay } = Astro.props;
+const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
 ---
 
-<style define:vars={{ isOverlay }}>
+<style>
   .wrapper {
     position: relative;
     display: flex;
@@ -18,6 +18,10 @@ const { mainImageId, isOverlay } = Astro.props;
 
     width: 100%;
     min-height: 445px;
+  }
+
+  .wrapper[data-is-overlay='false']:hover {
+    cursor: pointer;
   }
 
   img {
@@ -69,11 +73,13 @@ const { mainImageId, isOverlay } = Astro.props;
   }
 </style>
 
-<div class='wrapper'>
+<div
+  class='wrapper'
+  data-is-overlay={isOverlay.toString()}>
   <button
     class='btn-move-main-img'
-    id='btn-move-main-img-left'
-    data-active={isOverlay}>
+    id={isOverlay ? 'btn-move-main-img-left' : ''}
+    data-active={isOverlay.toString()}>
     <svg
       width='12'
       height='18'
@@ -94,8 +100,8 @@ const { mainImageId, isOverlay } = Astro.props;
   />
   <button
     class='btn-move-main-img'
-    id='btn-move-main-img-right'
-    data-active={isOverlay}>
+    id={isOverlay ? 'btn-move-main-img-right' : ''}
+    data-active={isOverlay.toString()}>
     <svg
       width='13'
       height='18'
@@ -111,6 +117,32 @@ const { mainImageId, isOverlay } = Astro.props;
   </button>
 </div>
 
-<script defer define:vars={{ isOverlay }}>
-  console.log(isOverlay);
+<script
+  type='module'
+  define:vars={{ isOverlay, mainImageId, listItemClassNames }}
+>
+  import {
+    handleNextOnItemClick,
+    handlePreviousOnItemClick,
+  } from '/src/scripts/moveImages.js';
+
+  const listItems = document.querySelectorAll(`.${listItemClassNames}`);
+  const mainImage = document.getElementById(mainImageId);
+  const rightBtn = document.getElementById('btn-move-main-img-right');
+  const leftBtn = document.getElementById('btn-move-main-img-left');
+
+  mainImage.addEventListener('click', () => {
+    const overlay = document.getElementById('overlay-wrapper');
+    overlay.setAttribute('data-active', 'true');
+  });
+
+  if (isOverlay) {
+    rightBtn.addEventListener('click', () => {
+      handleNextOnItemClick();
+    });
+
+    leftBtn.addEventListener('click', () => {
+      handlePreviousOnItemClick();
+    });
+  }
 </script>

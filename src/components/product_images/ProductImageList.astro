@@ -49,45 +49,13 @@ const { mainImageId, listItemClassNames } = Astro.props;
   />
 </div>
 
-<script defer define:vars={{ mainImageId, listItemClassNames }}>
+<script type='module' defer define:vars={{ mainImageId, listItemClassNames }}>
+  import { handleOnItemClick } from '/src/scripts/moveImages.js';
+
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
 
-  const imageMainSources = [
-    '/src/assets/images/image-product-1.jpg',
-    '/src/assets/images/image-product-2.jpg',
-    '/src/assets/images/image-product-3.jpg',
-    '/src/assets/images/image-product-4.jpg',
-  ];
-
-  let lastActiveItem = listItems[0];
-
-  function setMainImage(source) {
-    mainImage.src = source;
-  }
-
-  function getIndexOfItem(target) {
-    let index = 0;
-
-    for (let i = 0; i < listItems.length; i++) {
-      if (listItems[i] === target) {
-        index = i;
-        break;
-      }
-    }
-
-    return index;
-  }
-
-  function handleOnItemClick(item) {
-    lastActiveItem.setAttribute('data-active', 'false');
-    item.setAttribute('data-active', 'true');
-    lastActiveItem = item;
-    let index = getIndexOfItem(lastActiveItem);
-    setMainImage(imageMainSources[index]);
-  }
-
   listItems.forEach((item) => {
-    item.addEventListener('click', () => handleOnItemClick(item));
+    item.addEventListener('click', () => handleOnItemClick());
   });
 </script>
