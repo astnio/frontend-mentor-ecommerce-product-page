@@ -2,9 +2,6 @@
 import ProductImageList from './ProductImageList.astro';
 import ProductImageMain from './ProductImageMain.astro';
 
-// const normalMainImageId = 'main-image-normal';
-// const normalListItemNames = 'product-item-normal';
-
 const { mainImageId, listItemNames, isOverlay } = Astro.props;
 ---
 
@@ -38,6 +35,7 @@ const { mainImageId, listItemNames, isOverlay } = Astro.props;
   />
   <ProductImageList
     mainImageId={mainImageId}
+    isOverlay={isOverlay}
     listItemClassNames={listItemNames}
   />
 </div>

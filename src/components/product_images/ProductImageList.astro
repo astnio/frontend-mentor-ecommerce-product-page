@@ -8,7 +8,7 @@ const imageThumbnailSources = [
   '/src/assets/images/image-product-4-thumbnail.jpg',
 ];
 
-const { mainImageId, listItemClassNames } = Astro.props;
+const { mainImageId, listItemClassNames, isOverlay } = Astro.props;
 ---
 
 <style>
@@ -49,15 +49,19 @@ const { mainImageId, listItemClassNames } = Astro.props;
   />
 </div>
 
-<script type='module' defer define:vars={{ mainImageId, listItemClassNames }}>
-  import { handleOnItemClick } from '/src/scripts/moveImages.js';
+<script
+  type='module'
+  defer
+  define:vars={{ mainImageId, listItemClassNames, isOverlay }}
+>
+  import ImagePicker from '/src/scripts/moveImages.js';
 
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
 
   listItems.forEach((item) => {
     item.addEventListener('click', (e) =>
-      handleOnItemClick(listItems, mainImage, e)
+      ImagePicker.handleOnItemClick(listItems, mainImage, e, isOverlay)
     );
   });
 </script>

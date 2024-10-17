@@ -121,28 +121,25 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
   type='module'
   define:vars={{ isOverlay, mainImageId, listItemClassNames }}
 >
-  import {
-    handleNextOnItemClick,
-    handlePreviousOnItemClick,
-  } from '/src/scripts/moveImages.js';
+  import ImagePicker from '/src/scripts/moveImages.js';
 
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
   const rightBtn = document.getElementById('btn-move-main-img-right');
   const leftBtn = document.getElementById('btn-move-main-img-left');
 
-  mainImage.addEventListener('click', () => {
-    const overlay = document.getElementById('overlay-wrapper');
-    overlay.setAttribute('data-active', 'true');
-  });
-
-  if (isOverlay) {
+  if (isOverlay.toString() === 'false') {
+    mainImage.addEventListener('click', () => {
+      const overlay = document.getElementById('overlay-wrapper');
+      overlay.setAttribute('data-active', 'true');
+    });
+  } else if (isOverlay.toString() === 'true') {
     rightBtn.addEventListener('click', () => {
-      handleNextOnItemClick();
+      ImagePicker.handleNextOnItemClick();
     });
 
     leftBtn.addEventListener('click', () => {
-      handlePreviousOnItemClick();
+      ImagePicker.handlePreviousOnItemClick();
     });
   }
 </script>
