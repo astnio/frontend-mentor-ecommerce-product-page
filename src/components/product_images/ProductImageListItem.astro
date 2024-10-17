@@ -1,9 +1,9 @@
 ---
-const { active, imageSource, imageAlt } = Astro.props;
+const { active, imageSource, imageAlt, className } = Astro.props;
 ---
 
 <style>
-  .product-image-list-item {
+  .product-image-list-item-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,11 +23,11 @@ const { active, imageSource, imageAlt } = Astro.props;
     transition: outline 0.03s ease-out;
   }
 
-  .product-image-list-item:hover {
+  .product-image-list-item-wrapper:hover {
     cursor: pointer;
   }
 
-  .product-image-list-item[data-active='true'] {
+  .product-image-list-item-wrapper[data-active='true'] {
     outline: 2px solid var(--clr-orange-500);
   }
 
@@ -36,14 +36,14 @@ const { active, imageSource, imageAlt } = Astro.props;
     transition: opacity 0.03s ease-out;
   }
 
-  .product-image-list-item[data-active='true'] > img {
+  .product-image-list-item-wrapper[data-active='true'] > img {
     opacity: 0.2;
   }
 </style>
 
 <div
   data-active={active}
-  class='product-image-list-item'>
+  class=`${className} product-image-list-item-wrapper`>
   <img
     src={imageSource}
     alt={imageAlt}

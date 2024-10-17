@@ -1,6 +1,11 @@
 ---
 import ProductImageList from './ProductImageList.astro';
 import ProductImageMain from './ProductImageMain.astro';
+
+// const normalMainImageId = 'main-image-normal';
+// const normalListItemNames = 'product-item-normal';
+
+const { mainImageId, listItemNames } = Astro.props;
 ---
 
 <style>
@@ -12,13 +17,13 @@ import ProductImageMain from './ProductImageMain.astro';
     min-height: 565px;
     width: 100%;
     max-width: 445px;
-
-    /* Temp Color */
-    /* background-color: grey; */
   }
 </style>
 
 <div class='product-image-collection'>
-  <ProductImageMain />
-  <ProductImageList />
+  <ProductImageMain mainImageId={mainImageId} />
+  <ProductImageList
+    mainImageId={mainImageId}
+    listItemClassNames={listItemNames}
+  />
 </div>

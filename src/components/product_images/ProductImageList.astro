@@ -1,11 +1,14 @@
 ---
 import ProductImageListItem from './ProductImageListItem.astro';
+
 const imageThumbnailSources = [
   '/src/assets/images/image-product-1-thumbnail.jpg',
   '/src/assets/images/image-product-2-thumbnail.jpg',
   '/src/assets/images/image-product-3-thumbnail.jpg',
   '/src/assets/images/image-product-4-thumbnail.jpg',
 ];
+
+const { mainImageId, listItemClassNames } = Astro.props;
 ---
 
 <style>
@@ -17,31 +20,37 @@ const imageThumbnailSources = [
   }
 </style>
 
-<div class='product-item-list'>
+<div
+  class='product-item-list'
+  data-main-image-id={mainImageId}>
   <ProductImageListItem
     active='true'
     imageSource={imageThumbnailSources[0]}
+    className={listItemClassNames}
   />
 
   <ProductImageListItem
     active='false'
     imageSource={imageThumbnailSources[1]}
+    className={listItemClassNames}
   />
 
   <ProductImageListItem
     active='false'
     imageSource={imageThumbnailSources[2]}
+    className={listItemClassNames}
   />
 
   <ProductImageListItem
     active='false'
     imageSource={imageThumbnailSources[3]}
+    className={listItemClassNames}
   />
 </div>
 
-<script defer>
-  const listItems = document.querySelectorAll('.product-image-list-item');
-  const mainImage = document.getElementById('main-image');
+<script defer define:vars={{ mainImageId, listItemClassNames }}>
+  const listItems = document.querySelectorAll(`.${listItemClassNames}`);
+  const mainImage = document.getElementById(mainImageId);
 
   const imageMainSources = [
     '/src/assets/images/image-product-1.jpg',
