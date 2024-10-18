@@ -148,7 +148,7 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
   type='module'
   define:vars={{ isOverlay, mainImageId, listItemClassNames }}
 >
-  import ImagePicker from '/src/scripts/moveImages.js';
+  import ImagePicker from '/src/scripts/imagePicker.js';
 
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
