@@ -4,7 +4,7 @@ const cartButton = document.getElementById('cart-button');
 
 let cartOpen = false;
 
-function openCart() {
+export function openCart() {
   cartMenu.style.opacity = 1;
   cartMenu.style.visibility = 'visible';
   cartMenu.style.pointerEvents = 'all';
@@ -12,7 +12,7 @@ function openCart() {
   cartOpen = true;
 }
 
-function closeCart() {
+export function closeCart() {
   cartMenu.style.opacity = 0;
   cartMenu.style.visibility = 'hidden';
   cartMenu.style.pointerEvents = 'none';
