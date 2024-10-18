@@ -121,7 +121,7 @@ const normalListItemNames = 'product-item-normal';
       </div>
       <div class='add-to-cart-buttons-wrapper'>
         <NumberInput />
-        <Button>
+        <Button id='btn-add-to-cart'>
           <svg
             class='cart-icon'
             width='22'
@@ -139,3 +139,9 @@ const normalListItemNames = 'product-item-normal';
     </div>
   </main>
 </Base>
+
+<script defer type='module'>
+  import initAddToCartButton from '/src/scripts/cartManager.js';
+
+  initAddToCartButton();
+</script>

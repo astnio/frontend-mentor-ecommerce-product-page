@@ -1,5 +1,5 @@
 ---
-
+const { id } = Astro.props;
 ---
 
 <style>
@@ -28,6 +28,6 @@
   }
 </style>
 
-<button>
+<button id={id}>
   <slot />
 </button>
