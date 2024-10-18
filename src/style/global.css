@@ -14,6 +14,8 @@
   --clr-blue-500: hsl(220, 14%, 75%);
   --clr-blue-100: hsl(223, 64%, 98%);
 
+  --clr-grey-400: #e4e9f2;
+
   --clr-white: hsl(0, 0%, 100%);
   --clr-black-trans: rgba(0, 0, 0, 0.75);
 }
