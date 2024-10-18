@@ -25,9 +25,11 @@ import '/src/style/global.css';
 
     z-index: 1;
 
-    opacity: 1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-    transition-property: opacity;
+    transition-property: opacity, visibility, pointer-events;
     transition-duration: 0.25s;
     transition-timing-function: ease-out;
   }
