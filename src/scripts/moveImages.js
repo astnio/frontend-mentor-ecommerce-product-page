@@ -24,7 +24,12 @@ class ImagePicker {
     }
   }
 
-  static updateItem(tracker, list, image, e) {
+  static getTracker(isOverlay) {
+    if (isOverlay === 'true') return this.overlayTracker;
+    else if (isOverlay === 'false') return this.pageTracker;
+  }
+
+  static updateItemOnClick(tracker, list, image, e) {
     tracker.currentIndex = this.getIndexOfListItem(
       list,
       e.target.parentElement
@@ -37,16 +42,38 @@ class ImagePicker {
   }
 
   static handleOnItemClick(list, image, e, isOverlay) {
-    let tracker = this.overlayTracker;
-    if (isOverlay === 'false') {
-      tracker = this.pageTracker;
-    }
-    this.updateItem(tracker, list, image, e);
+    let tracker = this.getTracker(isOverlay);
+
+    this.updateItemOnClick(tracker, list, image, e);
   }
 
-  static handleNextOnItemClick() {}
+  static handleNextOnItemClick(list, image) {
+    this.overlayTracker.currentIndex += 1;
 
-  static handlePreviousOnItemClick() {}
+    if (this.overlayTracker.currentIndex > list.length - 1) {
+      this.overlayTracker.currentIndex = 0;
+    }
+
+    list[this.overlayTracker.lastIndex].setAttribute('data-active', 'false');
+    list[this.overlayTracker.currentIndex].setAttribute('data-active', 'true');
+    this.overlayTracker.lastIndex = this.overlayTracker.currentIndex;
+
+    image.src = this.imageMainSources[this.overlayTracker.currentIndex];
+  }
+
+  static handlePreviousOnItemClick(list, image) {
+    this.overlayTracker.currentIndex -= 1;
+
+    if (this.overlayTracker.currentIndex < 0) {
+      this.overlayTracker.currentIndex = list.length - 1;
+    }
+
+    list[this.overlayTracker.lastIndex].setAttribute('data-active', 'false');
+    list[this.overlayTracker.currentIndex].setAttribute('data-active', 'true');
+    this.overlayTracker.lastIndex = this.overlayTracker.currentIndex;
+
+    image.src = this.imageMainSources[this.overlayTracker.currentIndex];
+  }
 }
 
 export default ImagePicker;

@@ -162,11 +162,11 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     });
   } else if (isOverlay.toString() === 'true') {
     rightBtn.addEventListener('click', () => {
-      ImagePicker.handleNextOnItemClick();
+      ImagePicker.handleNextOnItemClick(listItems, mainImage);
     });
 
     leftBtn.addEventListener('click', () => {
-      ImagePicker.handlePreviousOnItemClick();
+      ImagePicker.handlePreviousOnItemClick(listItems, mainImage);
     });
   }
 </script>
