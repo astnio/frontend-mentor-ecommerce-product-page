@@ -42,13 +42,18 @@ import ProfileButton from './ProfileButton.astro';
 
   .nav-cart-wrapper {
     position: relative;
+    margin-right: 1.5rem;
+  }
+
+  .nav-logo-wrapper {
+    margin-right: 2rem;
   }
 </style>
 
 <header class='max-width'>
   <nav>
     <div class='nav-left-items-wrapper'>
-      <Logo />
+      <span class='nav-logo-wrapper'><Logo /></span>
       <LinkList />
     </div>
     <div class='nav-cart-wrapper'>
