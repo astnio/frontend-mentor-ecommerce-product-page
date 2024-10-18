@@ -1,8 +1,6 @@
 const cartMenu = document.getElementById('cart-menu');
 const cartButton = document.getElementById('cart-button');
 
-console.log(cartMenu);
-
 let cartOpen = false;
 
 function openCart() {
