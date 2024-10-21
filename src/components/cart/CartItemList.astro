@@ -1,7 +1,8 @@
 ---
+import '/src/style/global.css';
 import { Image } from 'astro:assets';
-
 import productImage from '/src/assets/images/image-product-1-thumbnail.jpg';
+import Button from '../inputs/Button.astro';
 ---
 
 <style>
@@ -9,6 +10,13 @@ import productImage from '/src/assets/images/image-product-1-thumbnail.jpg';
     list-style-type: none;
     padding: 0;
     margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .cart-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
   .image-wrapper {
@@ -18,13 +26,48 @@ import productImage from '/src/assets/images/image-product-1-thumbnail.jpg';
     overflow: hidden;
     border-radius: 4pt;
   }
+
+  .cart-item-cost-wrapper,
+  .cart-item-name {
+    font-size: 16px;
+  }
+
+  .cart-total-cost {
+    font-weight: 700;
+    color: var(--clr-blue-900);
+  }
+
+  #btn-delete-cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 16px;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: transparent;
+
+    border: none;
+
+    fill: var(--clr-blue-500);
+
+    transition: fill 0.1s ease-out;
+  }
+
+  #btn-delete-cart-item:hover {
+    cursor: pointer;
+    fill: var(--clr-orange-500);
+  }
 </style>
 
 <ul
   id='cart-items-list'
   class='cart-items-list'>
   <li>
-    <div>
+    <div class='cart-item-wrapper'>
       <div class='image-wrapper'>
         <Image
           src={productImage}
@@ -33,6 +76,39 @@ import productImage from '/src/assets/images/image-product-1-thumbnail.jpg';
           height={50}
         />
       </div>
+      <div class='cart-item-info-wrapper'>
+        <p class='cart-item-name'>Fall Limited Edition Sneakers</p>
+        <p class='cart-item-cost-wrapper'>
+          $<span id='product-price-cart'>0.00</span> x <span
+            id='product-qty-cart'>0</span
+          >
+          <span class='cart-total-cost'
+            >$<span id='product-total-cart'>0.00</span></span
+          >
+        </p>
+      </div>
+      <div>
+        <button id='btn-delete-cart-item'>
+          <svg
+            width='14'
+            height='16'
+            xmlns='http://www.w3.org/2000/svg'
+            xmlns:xlink='http://www.w3.org/1999/xlink'
+            ><defs
+              ><path
+                d='M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z'
+                id='a'
+              ></path></defs
+            ><use
+              fill='inherit'
+              fill-rule='nonzero'
+              xlink:href='#a'
+            ></use></svg
+          >
+        </button>
+      </div>
     </div>
   </li>
 </ul>
+
+<Button id='btn-checkout'> Checkout </Button>

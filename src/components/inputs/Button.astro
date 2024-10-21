@@ -1,5 +1,5 @@
 ---
-const { id } = Astro.props;
+const { id, maxWidthEnable } = Astro.props;
 ---
 
 <style>
@@ -11,7 +11,6 @@ const { id } = Astro.props;
 
     min-height: 56px;
     width: 100%;
-    max-width: 272px;
 
     border-radius: 10pt;
     border: none;
@@ -26,8 +25,14 @@ const { id } = Astro.props;
     cursor: pointer;
     background-color: var(--clr-orange-200);
   }
+
+  button[data-max-width-enable='true'] {
+    max-width: 272px;
+  }
 </style>
 
-<button id={id}>
+<button
+  id={id}
+  data-max-width-enable={maxWidthEnable}>
   <slot />
 </button>
