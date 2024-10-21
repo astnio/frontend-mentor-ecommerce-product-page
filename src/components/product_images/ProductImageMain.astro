@@ -80,12 +80,12 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     stroke: var(--clr-orange-500);
   }
 
-  #btn-move-main-img-left {
+  .move-img-left {
     left: 0;
     transform: translateX(-50%);
   }
 
-  #btn-move-main-img-right {
+  .move-img-right {
     right: 0;
     transform: translateX(50%);
   }
@@ -113,8 +113,8 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
   class='container'
   data-is-overlay={isOverlay}>
   <button
-    class='btn-move-main-img'
-    id={isOverlay ? 'btn-move-main-img-left' : ''}
+    class='btn-move-main-img move-img-left'
+    id={`${listItemClassNames}-move-img-left`}
     data-active={isOverlay.toString()}>
     <svg
       width='12'
@@ -139,8 +139,8 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     />
   </div>
   <button
-    class='btn-move-main-img'
-    id={isOverlay ? 'btn-move-main-img-right' : ''}
+    class='btn-move-main-img move-img-right'
+    id={`${listItemClassNames}-move-img-right`}
     data-active={isOverlay.toString()}>
     <svg
       width='13'
@@ -165,8 +165,12 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
 
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
-  const rightBtn = document.getElementById('btn-move-main-img-right');
-  const leftBtn = document.getElementById('btn-move-main-img-left');
+  const rightBtn = document.getElementById(
+    `${listItemClassNames}-move-img-right`
+  );
+  const leftBtn = document.getElementById(
+    `${listItemClassNames}-move-img-left`
+  );
 
   if (isOverlay.toString() === 'false') {
     mainImage.addEventListener('click', () => {
