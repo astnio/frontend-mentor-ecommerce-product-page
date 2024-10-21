@@ -2,10 +2,10 @@
 import ProductImageListItem from './ProductImageListItem.astro';
 
 const imageThumbnailSources = [
-  '/src/assets/images/image-product-1-thumbnail.jpg',
-  '/src/assets/images/image-product-2-thumbnail.jpg',
-  '/src/assets/images/image-product-3-thumbnail.jpg',
-  '/src/assets/images/image-product-4-thumbnail.jpg',
+  '/frontend-mentor-ecommerce-product-page/src/assets/images/image-product-1-thumbnail.jpg',
+  '/frontend-mentor-ecommerce-product-page/src/assets/images/image-product-2-thumbnail.jpg',
+  '/frontend-mentor-ecommerce-product-page/src/assets/images/image-product-3-thumbnail.jpg',
+  '/frontend-mentor-ecommerce-product-page/src/assets/images/image-product-4-thumbnail.jpg',
 ];
 
 const { mainImageId, listItemClassNames, isOverlay } = Astro.props;
@@ -55,7 +55,7 @@ const { mainImageId, listItemClassNames, isOverlay } = Astro.props;
   defer
   define:vars={{ mainImageId, listItemClassNames, isOverlay }}
 >
-  import ImagePicker from '/src/scripts/imagePicker.mjs';
+  import ImagePicker from '/frontend-mentor-ecommerce-product-page/src/scripts/imagePicker.mjs';
 
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
