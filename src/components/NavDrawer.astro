@@ -1,8 +1,6 @@
 ---
 import '/src/style/global.css';
 import LinkList from './LinkList.astro';
-
-const navDrawerActive = 'true';
 ---
 
 <style>
@@ -66,7 +64,7 @@ const navDrawerActive = 'true';
 
 <div
   id='nav-drawer'
-  data-active={navDrawerActive}>
+  data-active='false'>
   <div class='nav-drawer-header'>
     <button id='btn-close-nav-drawer'>
       <svg
