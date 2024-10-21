@@ -1,6 +1,8 @@
 ---
 import '/src/style/global.css';
 import LinkList from './LinkList.astro';
+
+const navDrawerActive = 'true';
 ---
 
 <style>
@@ -22,6 +24,20 @@ import LinkList from './LinkList.astro';
     padding: 2rem;
 
     z-index: 20;
+
+    transition-property: transform, visibility;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+  }
+
+  #nav-drawer[data-active='true'] {
+    transform: translateX(0%);
+    visibility: visible;
+  }
+
+  #nav-drawer[data-active='false'] {
+    transform: translateX(-100%);
+    visibility: hidden;
   }
 
   .nav-drawer-header {
@@ -48,7 +64,9 @@ import LinkList from './LinkList.astro';
   }
 </style>
 
-<div id='nav-drawer'>
+<div
+  id='nav-drawer'
+  data-active={navDrawerActive}>
   <div class='nav-drawer-header'>
     <button id='btn-close-nav-drawer'>
       <svg
@@ -67,3 +85,8 @@ import LinkList from './LinkList.astro';
     <LinkList />
   </div>
 </div>
+
+<script type='module'>
+  import initDrawerButtons from '/src/scripts/navDrawerManager.js';
+  initDrawerButtons();
+</script>

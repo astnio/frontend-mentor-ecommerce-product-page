@@ -49,9 +49,16 @@ import ProfileButton from './ProfileButton.astro';
     margin-right: 2rem;
   }
 
-  #nav-menu-icon {
+  #btn-open-nav-drawer {
     display: none;
 
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  #nav-menu-icon {
     fill: #69707d;
 
     transition: fill 0.1s ease-out;
@@ -62,7 +69,7 @@ import ProfileButton from './ProfileButton.astro';
   }
 
   @media screen and (max-width: 1150px) {
-    #nav-menu-icon {
+    #btn-open-nav-drawer {
       display: flex;
       margin-right: 1rem;
     }
@@ -76,8 +83,9 @@ import ProfileButton from './ProfileButton.astro';
 <header class='max-width'>
   <nav>
     <div class='nav-left-items-wrapper'>
-      <div id='nav-menu-icon'>
+      <button id='btn-open-nav-drawer'>
         <svg
+          id='nav-menu-icon'
           width='16'
           height='15'
           xmlns='http://www.w3.org/2000/svg'
@@ -87,7 +95,7 @@ import ProfileButton from './ProfileButton.astro';
             fill-rule='evenodd'
           ></path></svg
         >
-      </div>
+      </button>
       <span class='nav-logo-wrapper'><Logo /></span>
       <div class='header-link-list-wrapper'>
         <LinkList />
