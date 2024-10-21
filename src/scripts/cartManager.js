@@ -29,10 +29,14 @@ function updateTotalLabel() {
   productTotalLabel.innerText = totalFixed;
 }
 
-function incrementItem() {
+function checkInputQtyValid() {
   if (!inputItemQty.value) {
     setItemQty(0);
   }
+}
+
+function incrementItem() {
+  checkInputQtyValid();
 
   if (parseInt(inputItemQty.value) >= 100) {
     setItemQty(100);
@@ -44,9 +48,7 @@ function incrementItem() {
 }
 
 function decrementItem() {
-  if (!inputItemQty.value) {
-    setItemQty(0);
-  }
+  checkInputQtyValid();
 
   if (parseInt(inputItemQty.value) <= 0) {
     setItemQty(0);
