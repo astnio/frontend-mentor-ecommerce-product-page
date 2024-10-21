@@ -1,4 +1,5 @@
 ---
+import CartItemList from './CartItemList.astro';
 import '/src/style/global.css';
 ---
 
@@ -73,6 +74,10 @@ import '/src/style/global.css';
 
     margin-bottom: 2rem;
   }
+
+  .hidden {
+    display: none;
+  }
 </style>
 
 <div
@@ -81,6 +86,13 @@ import '/src/style/global.css';
   <p class='cart-heading'>Cart</p>
   <hr class='cart-horizontal-rule' />
   <div class='cart-items-wrapper'>
-    <p class='cart-empty-message'>Your cart is empty.</p>
+    <p
+      id='cart-empty-message'
+      class='cart-empty-message hidden'>
+      Your cart is empty.
+    </p>
+    <div class=''>
+      <CartItemList />
+    </div>
   </div>
 </div>
