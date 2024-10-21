@@ -63,6 +63,7 @@ export default function initAddToCartButton() {
   btnAddToCart.addEventListener('click', openCart);
   btnIncrementItem.addEventListener('click', incrementItem);
   btnDecrementItem.addEventListener('click', decrementItem);
+  btnRemoveFromCart.addEventListener('click', removeFromCart);
 }
 
 productPriceLabel.innerText = Number.parseFloat(productPrice).toFixed(2);
