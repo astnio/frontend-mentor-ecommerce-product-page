@@ -1,5 +1,8 @@
 import { openCart } from './viewCartButton.js';
 
+const cartItemList = document.getElementById('cart-item-list-wrapper');
+const cartEmptyLabel = document.getElementById('cart-empty-message');
+
 const btnAddToCart = document.getElementById('btn-add-to-cart');
 const btnRemoveFromCart = document.getElementById('btn-delete-cart-item');
 
@@ -18,9 +21,34 @@ function setItemQty(n) {
   productQtyLabel.innerText = inputItemQty.value;
 }
 
+function toggleCartItemList() {
+  cartItemList.classList.toggle('hidden');
+  cartEmptyLabel.classList.toggle('hidden');
+}
+
+function disableCartItemLst() {
+  if (cartEmptyLabel.classList.contains('hidden')) {
+    toggleCartItemList();
+  }
+}
+
+function enableCartItemList() {
+  if (cartItemList.classList.contains('hidden')) {
+    toggleCartItemList();
+  }
+}
+
+function addToCart() {
+  if (Number.parseFloat(inputItemQty.value) > 0) {
+    enableCartItemList();
+    openCart();
+  }
+}
+
 function removeFromCart() {
   setItemQty(0);
   updateTotalLabel();
+  toggleCartItemList();
 }
 
 function updateTotalLabel() {
@@ -60,7 +88,7 @@ function decrementItem() {
 }
 
 export default function initAddToCartButton() {
-  btnAddToCart.addEventListener('click', openCart);
+  btnAddToCart.addEventListener('click', addToCart);
   btnIncrementItem.addEventListener('click', incrementItem);
   btnDecrementItem.addEventListener('click', decrementItem);
   btnRemoveFromCart.addEventListener('click', removeFromCart);
