@@ -1,4 +1,4 @@
-import { openCart } from './viewCartButton.js';
+import { openCart } from './viewCartButton.mjs';
 
 const cartItemList = document.getElementById('cart-item-list-wrapper');
 const cartEmptyLabel = document.getElementById('cart-empty-message');
