@@ -1,10 +1,11 @@
 ---
-
+import { Image } from 'astro:assets';
+import myLogo from '../assets/images/logo.svg';
 ---
 
 <a href='/frontend-mentor-ecommerce-page/'>
-  <img
-    src='/src/assets/images/logo.svg'
+  <Image
+    src={myLogo}
     alt=''
   />
 </a>

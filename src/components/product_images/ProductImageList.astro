@@ -1,11 +1,16 @@
 ---
 import ProductImageListItem from './ProductImageListItem.astro';
 
+import imgProduct1Thumb from '../../assets/images/image-product-1-thumbnail.jpg';
+import imgProduct2Thumb from '../../assets/images/image-product-2-thumbnail.jpg';
+import imgProduct3Thumb from '../../assets/images/image-product-3-thumbnail.jpg';
+import imgProduct4Thumb from '../../assets/images/image-product-4-thumbnail.jpg';
+
 const imageThumbnailSources = [
-  '/src/assets/images/image-product-1-thumbnail.jpg',
-  '/src/assets/images/image-product-2-thumbnail.jpg',
-  '/src/assets/images/image-product-3-thumbnail.jpg',
-  '/src/assets/images/image-product-4-thumbnail.jpg',
+  imgProduct1Thumb,
+  imgProduct2Thumb,
+  imgProduct3Thumb,
+  imgProduct4Thumb,
 ];
 
 const { mainImageId, listItemClassNames, isOverlay } = Astro.props;

@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 const { active, imageSource, imageAlt, className } = Astro.props;
 ---
 
@@ -39,16 +41,30 @@ const { active, imageSource, imageAlt, className } = Astro.props;
     transition: opacity 0.03s ease-out;
   }
 
-  .product-image-list-item-wrapper[data-active='true'] > img {
+  .product-image-list-item-wrapper[data-active='true'] > .image-container {
     opacity: 0.2;
+  }
+
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-container > img {
+    aspect-ratio: 1;
+    width: 100%;
+    height: 100%;
   }
 </style>
 
 <div
   data-active={active}
   class=`${className} product-image-list-item-wrapper`>
-  <img
-    src={imageSource}
-    alt={imageAlt}
-  />
+  <div class='image-container'>
+    <Image
+      src={imageSource}
+      alt=''
+    />
+  </div>
 </div>

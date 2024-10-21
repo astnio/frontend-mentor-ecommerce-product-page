@@ -1,5 +1,6 @@
 ---
-
+import { Image } from 'astro:assets';
+import avatar from '../assets/images/image-avatar.png';
 ---
 
 <style>
@@ -25,9 +26,15 @@
     outline: 3px solid var(--clr-orange-500);
   }
 
-  img {
-    width: 100%;
-    object-fit: cover;
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar-container > img {
+    width: 50px;
+    height: 50px;
   }
 
   @media screen and (max-width: 1150px) {
@@ -35,12 +42,19 @@
       width: 24px;
       height: 24px;
     }
+
+    .avatar-container > img {
+      width: 24px;
+      height: 24px;
+    }
   }
 </style>
 
 <button>
-  <img
-    src='/src/assets/images/image-avatar.png'
-    alt=''
-  />
+  <div class='avatar-container'>
+    <Image
+      src={avatar}
+      alt=''
+    />
+  </div>
 </button>

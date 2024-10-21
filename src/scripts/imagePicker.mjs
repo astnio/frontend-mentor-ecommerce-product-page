@@ -32,10 +32,14 @@ class ImagePicker {
   static updateItemOnClick(tracker, list, image, e) {
     tracker.currentIndex = this.getIndexOfListItem(
       list,
-      e.target.parentElement
+      e.target.closest('.product-image-list-item-wrapper')
     );
-    list[tracker.lastIndex].setAttribute('data-active', 'false');
-    list[tracker.currentIndex].setAttribute('data-active', 'true');
+    list[tracker.lastIndex]
+      .closest('.product-image-list-item-wrapper')
+      .setAttribute('data-active', 'false');
+    list[tracker.currentIndex]
+      .closest('.product-image-list-item-wrapper')
+      .setAttribute('data-active', 'true');
     tracker.lastIndex = tracker.currentIndex;
 
     image.src = this.imageMainSources[tracker.currentIndex];
