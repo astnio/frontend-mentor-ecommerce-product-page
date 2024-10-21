@@ -45,8 +45,6 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
 
   img {
     max-width: 100%;
-    /* border-radius: 15pt; */
-
     transition: transform 0.25s ease-in-out;
   }
 
@@ -96,9 +94,17 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
 
     transition: stroke 0.1s ease-out;
   }
+
+  @media screen and (max-width: 1150px) {
+    .container[data-is-overlay='true'] {
+      display: none;
+    }
+  }
 </style>
 
-<div class='container'>
+<div
+  class='container'
+  data-is-overlay={isOverlay}>
   <button
     class='btn-move-main-img'
     id={isOverlay ? 'btn-move-main-img-left' : ''}

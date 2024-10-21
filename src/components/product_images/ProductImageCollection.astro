@@ -23,6 +23,15 @@ const { mainImageId, listItemNames, isOverlay } = Astro.props;
     max-width: 550px;
     margin-bottom: 4rem;
   }
+
+  @media screen and (max-width: 1150px) {
+    .product-image-list-wrapper {
+      display: none;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+  }
 </style>
 
 <div
@@ -33,9 +42,11 @@ const { mainImageId, listItemNames, isOverlay } = Astro.props;
     isOverlay={isOverlay}
     listItemClassNames={listItemNames}
   />
-  <ProductImageList
-    mainImageId={mainImageId}
-    isOverlay={isOverlay}
-    listItemClassNames={listItemNames}
-  />
+  <div class='product-image-list-wrapper'>
+    <ProductImageList
+      mainImageId={mainImageId}
+      isOverlay={isOverlay}
+      listItemClassNames={listItemNames}
+    />
+  </div>
 </div>
