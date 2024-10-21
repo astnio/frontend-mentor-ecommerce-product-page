@@ -16,6 +16,7 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     align-items: center;
     justify-content: center;
   }
+
   .wrapper {
     position: relative;
     display: flex;
@@ -98,6 +99,11 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
   @media screen and (max-width: 1150px) {
     .container[data-is-overlay='true'] {
       display: none;
+    }
+
+    .wrapper {
+      min-height: auto;
+      border-radius: 0;
     }
   }
 </style>
