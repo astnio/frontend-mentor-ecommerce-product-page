@@ -3,6 +3,11 @@
 ---
 
 <style>
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
   .num-counter-wrapper {
     display: flex;
     align-items: center;
@@ -90,13 +95,43 @@
 
     white-space: nowrap;
   }
+
+  @media screen and (max-width: 1150px) {
+    .num-counter-wrapper {
+      max-width: 100%;
+    }
+
+    .num-btn {
+      position: relative;
+      font-size: 2rem;
+      padding-inline: 1.8rem;
+      padding-block: 0;
+    }
+
+    p {
+      position: absolute;
+      top: 50%;
+    }
+
+    #btn-item-increment > p {
+      transform: translateY(-60%);
+    }
+
+    #btn-item-decrement > p {
+      transform: translateY(-55%);
+    }
+
+    #item-quantity {
+      font-size: 1.2rem;
+    }
+  }
 </style>
 
 <div class='num-counter-wrapper'>
   <div
     id='btn-item-decrement'
     class='num-btn'>
-    -
+    <p>-</p>
   </div>
   <label
     class='visually-hidden'
@@ -116,6 +151,6 @@
   <div
     id='btn-item-increment'
     class='num-btn'>
-    +
+    <p>+</p>
   </div>
 </div>

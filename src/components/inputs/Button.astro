@@ -29,6 +29,12 @@ const { id, maxWidthEnable } = Astro.props;
   button[data-max-width-enable='true'] {
     max-width: 272px;
   }
+
+  @media screen and (max-width: 1150px) {
+    button[data-max-width-enable='true'] {
+      max-width: 100%;
+    }
+  }
 </style>
 
 <button
