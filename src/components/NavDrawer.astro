@@ -1,0 +1,69 @@
+---
+import '/src/style/global.css';
+import LinkList from './LinkList.astro';
+---
+
+<style>
+  #nav-drawer {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+
+    width: 250px;
+    height: 100vh;
+
+    background-color: var(--clr-white);
+
+    padding: 2rem;
+
+    z-index: 20;
+  }
+
+  .nav-drawer-header {
+    margin-bottom: 2rem;
+  }
+
+  #btn-close-nav-drawer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    margin: 0;
+
+    border: none;
+    background-color: transparent;
+
+    fill: #69707d;
+  }
+
+  #btn-close-nav-drawer:hover {
+    fill: var(--clr-orange-500);
+  }
+</style>
+
+<div id='nav-drawer'>
+  <div class='nav-drawer-header'>
+    <button id='btn-close-nav-drawer'>
+      <svg
+        width='14'
+        height='15'
+        xmlns='http://www.w3.org/2000/svg'
+        ><path
+          d='m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z'
+          fill='inherit'
+          fill-rule='evenodd'
+        ></path></svg
+      >
+    </button>
+  </div>
+  <div class='link-list-wrapper'>
+    <LinkList />
+  </div>
+</div>

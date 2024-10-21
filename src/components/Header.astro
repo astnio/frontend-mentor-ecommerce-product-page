@@ -48,13 +48,50 @@ import ProfileButton from './ProfileButton.astro';
   .nav-logo-wrapper {
     margin-right: 2rem;
   }
+
+  #nav-menu-icon {
+    display: none;
+
+    fill: #69707d;
+
+    transition: fill 0.1s ease-out;
+  }
+
+  #nav-menu-icon:hover {
+    fill: var(--clr-orange-500);
+  }
+
+  @media screen and (max-width: 1150px) {
+    #nav-menu-icon {
+      display: flex;
+      margin-right: 1rem;
+    }
+
+    .header-link-list-wrapper {
+      display: none;
+    }
+  }
 </style>
 
 <header class='max-width'>
   <nav>
     <div class='nav-left-items-wrapper'>
+      <div id='nav-menu-icon'>
+        <svg
+          width='16'
+          height='15'
+          xmlns='http://www.w3.org/2000/svg'
+          ><path
+            d='M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z'
+            fill='inherit'
+            fill-rule='evenodd'
+          ></path></svg
+        >
+      </div>
       <span class='nav-logo-wrapper'><Logo /></span>
-      <LinkList />
+      <div class='header-link-list-wrapper'>
+        <LinkList />
+      </div>
     </div>
     <div class='nav-cart-wrapper'>
       <CartButton />
