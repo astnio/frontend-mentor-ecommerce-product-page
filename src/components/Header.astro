@@ -69,6 +69,10 @@ import ProfileButton from './ProfileButton.astro';
   }
 
   @media screen and (max-width: 1150px) {
+    nav {
+      padding: 1rem;
+    }
+
     #btn-open-nav-drawer {
       display: flex;
       margin-right: 1rem;
@@ -76,6 +80,14 @@ import ProfileButton from './ProfileButton.astro';
 
     .header-link-list-wrapper {
       display: none;
+    }
+
+    hr {
+      display: none;
+    }
+
+    .nav-cart-wrapper {
+      margin-right: 0;
     }
   }
 </style>
