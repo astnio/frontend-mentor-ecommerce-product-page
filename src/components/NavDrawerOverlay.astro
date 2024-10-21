@@ -1,0 +1,40 @@
+---
+
+---
+
+<style>
+  #nav-drawer-overlay {
+    display: none;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.6);
+
+    opacity: 1;
+    pointer-events: all;
+
+    z-index: 1000;
+
+    transition: opacity 0.1s ease-out;
+  }
+
+  #nav-drawer-overlay[data-active='false'] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 1150px) {
+    #nav-drawer-overlay {
+      display: block;
+    }
+  }
+</style>
+
+<div
+  data-active='false'
+  id='nav-drawer-overlay'>
+</div>

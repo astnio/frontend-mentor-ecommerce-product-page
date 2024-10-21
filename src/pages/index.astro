@@ -6,6 +6,7 @@ import NumberInput from '../components/inputs/NumberInput.astro';
 import Button from '../components/inputs/Button.astro';
 import ProductImageOverlay from '../components/product_images/ProductImageOverlay.astro';
 import CartMenuOverlay from '../components/cart/CartMenuOverlay.astro';
+import NavDrawerOverlay from '../components/NavDrawerOverlay.astro';
 
 const normalMainImageId = 'main-image-normal';
 const normalListItemNames = 'product-item-normal';
@@ -135,7 +136,7 @@ const normalListItemNames = 'product-item-normal';
   <main class='max-width'>
     <ProductImageOverlay />
     <CartMenuOverlay />
-
+    <NavDrawerOverlay />
     <ProductImageCollection
       mainImageId={normalMainImageId}
       listItemNames={normalListItemNames}
