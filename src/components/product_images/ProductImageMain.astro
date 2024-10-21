@@ -106,6 +106,10 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
       border-radius: 0;
       aspect-ratio: 5/4;
     }
+
+    .btn-move-main-img[data-active='false'] {
+      display: block;
+    }
   }
 </style>
 
@@ -177,13 +181,12 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
       const overlay = document.getElementById('overlay-wrapper');
       overlay.setAttribute('data-active', 'true');
     });
-  } else if (isOverlay.toString() === 'true') {
-    rightBtn.addEventListener('click', () => {
-      ImagePicker.handleNextOnItemClick(listItems, mainImage);
-    });
-
-    leftBtn.addEventListener('click', () => {
-      ImagePicker.handlePreviousOnItemClick(listItems, mainImage);
-    });
   }
+  rightBtn.addEventListener('click', () => {
+    ImagePicker.handleNextOnItemClick(listItems, mainImage);
+  });
+
+  leftBtn.addEventListener('click', () => {
+    ImagePicker.handlePreviousOnItemClick(listItems, mainImage);
+  });
 </script>
