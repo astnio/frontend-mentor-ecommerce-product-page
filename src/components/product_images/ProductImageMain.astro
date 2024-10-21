@@ -107,8 +107,27 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
       aspect-ratio: 5/4;
     }
 
+    .btn-move-main-img {
+      width: 40px;
+      height: 40px;
+
+      padding: 0;
+    }
+
+    svg {
+      transform: scale(0.8);
+    }
+
     .btn-move-main-img[data-active='false'] {
       display: block;
+    }
+
+    .move-img-left {
+      transform: translateX(20%);
+    }
+
+    .move-img-right {
+      transform: translateX(-20%);
     }
   }
 </style>
