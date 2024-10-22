@@ -90,7 +90,30 @@ import LinkList from './LinkList.astro';
   </div>
 </div>
 
-<script defer type='module'>
-  import initDrawerButtons from '/frontend-mentor-ecommerce-product-page/src/scripts/navDrawerManager.mjs';
-  initDrawerButtons();
+<script is:inline type='module'>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navDrawer = document.getElementById('nav-drawer');
+    const drawerOverlay = document.getElementById('nav-drawer-overlay');
+    const btnCloseDrawer = document.getElementById('btn-close-nav-drawer');
+    const btnOpenDrawer = document.getElementById('btn-open-nav-drawer');
+
+    function initDrawerButtons() {
+      btnCloseDrawer.addEventListener('click', () => {
+        navDrawer.dataset.active = 'false';
+        drawerOverlay.dataset.active = 'false';
+      });
+
+      btnOpenDrawer.addEventListener('click', () => {
+        navDrawer.dataset.active = 'true';
+        drawerOverlay.dataset.active = 'true';
+      });
+
+      drawerOverlay.addEventListener('click', () => {
+        navDrawer.dataset.active = 'false';
+        drawerOverlay.dataset.active = 'false';
+      });
+    }
+
+    initDrawerButtons();
+  });
 </script>
