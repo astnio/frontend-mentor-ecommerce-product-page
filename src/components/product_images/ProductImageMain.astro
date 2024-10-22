@@ -199,11 +199,7 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
   </button>
 </div>
 
-<script
-  defer
-  is:inline
-  define:vars={{ isOverlay, mainImageId, listItemClassNames }}
->
+<script is:inline define:vars={{ isOverlay, mainImageId, listItemClassNames }}>
   class ImagePicker {
     imageMainSources = [
       '/frontend-mentor-ecommerce-product-page/images/image-product-1.jpg',
@@ -242,7 +238,7 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
         this.overlayTracker.currentIndex = 0;
       }
 
-      console.log(list);
+      // console.log(list);
 
       list[this.overlayTracker.lastIndex].setAttribute('data-active', 'false');
       list[this.overlayTracker.currentIndex].setAttribute(
@@ -272,30 +268,30 @@ const { mainImageId, isOverlay, listItemClassNames } = Astro.props;
     }
   }
 
-  const imagePicker = new ImagePicker();
+  document.addEventListener('DOMContentLoaded', () => {
+    const imagePicker = new ImagePicker();
 
-  const listItems = document.querySelectorAll(`.${listItemClassNames}`);
-  const mainImage = document.getElementById(mainImageId);
-  const rightBtn = document.getElementById(
-    `${listItemClassNames}-move-img-right`
-  );
-  const leftBtn = document.getElementById(
-    `${listItemClassNames}-move-img-left`
-  );
+    const listItems = document.querySelectorAll(`.${listItemClassNames}`);
+    const mainImage = document.getElementById(mainImageId);
+    const rightBtn = document.getElementById(
+      `${listItemClassNames}-move-img-right`
+    );
+    const leftBtn = document.getElementById(
+      `${listItemClassNames}-move-img-left`
+    );
 
-  if (isOverlay.toString() === 'false') {
-    mainImage.addEventListener('click', () => {
-      const overlay = document.getElementById('overlay-wrapper');
-      overlay.setAttribute('data-active', 'true');
+    if (isOverlay.toString() === 'false') {
+      mainImage.addEventListener('click', () => {
+        const overlay = document.getElementById('overlay-wrapper');
+        overlay.setAttribute('data-active', 'true');
+      });
+    }
+    rightBtn.addEventListener('click', () => {
+      imagePicker.handleNextOnItemClick(listItems, mainImage);
     });
-  }
-  rightBtn.addEventListener('click', () => {
-    console.log(listItems);
-    console.log(listItemClassNames);
-    imagePicker.handleNextOnItemClick(listItems, mainImage);
-  });
 
-  leftBtn.addEventListener('click', () => {
-    imagePicker.handlePreviousOnItemClick(listItems, mainImage);
+    leftBtn.addEventListener('click', () => {
+      imagePicker.handlePreviousOnItemClick(listItems, mainImage);
+    });
   });
 </script>

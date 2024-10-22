@@ -114,6 +114,8 @@ const { mainImageId, listItemClassNames, isOverlay } = Astro.props;
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
 
+  // console.log(listItems);
+
   listItems.forEach((item) => {
     item.addEventListener('click', (e) =>
       imagePicker.handleOnItemClick(listItems, mainImage, e, isOverlay)
