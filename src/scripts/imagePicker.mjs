@@ -1,3 +1,5 @@
+export { ImagePicker };
+
 class ImagePicker {
   static imageMainSources = [
     '/src/assets/images/image-product-1.jpg',
@@ -79,5 +81,3 @@ class ImagePicker {
     image.src = this.imageMainSources[this.overlayTracker.currentIndex];
   }
 }
-
-export default ImagePicker;
