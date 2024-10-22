@@ -54,18 +54,69 @@ const { mainImageId, listItemClassNames, isOverlay } = Astro.props;
   />
 </div>
 
-<script
-  type='module'
-  define:vars={{ mainImageId, listItemClassNames, isOverlay }}
->
-  import { ImagePicker } from '/src/scripts/imagePicker.mjs';
+<script is:inline define:vars={{ mainImageId, listItemClassNames, isOverlay }}>
+  class ImagePicker {
+    imageMainSources = [
+      '/src/assets/images/image-product-1.jpg',
+      '/src/assets/images/image-product-2.jpg',
+      '/src/assets/images/image-product-3.jpg',
+      '/src/assets/images/image-product-4.jpg',
+    ];
+
+    overlayTracker = {
+      currentIndex: 0,
+      lastIndex: 0,
+    };
+
+    pageTracker = {
+      currentIndex: 0,
+      lastIndex: 0,
+    };
+
+    getIndexOfListItem(list, target) {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i] === target) {
+          return i;
+        }
+      }
+    }
+
+    getTracker(isOverlay) {
+      if (isOverlay === 'true') return this.overlayTracker;
+      else if (isOverlay === 'false') return this.pageTracker;
+    }
+
+    updateItemOnClick(tracker, list, image, e) {
+      tracker.currentIndex = this.getIndexOfListItem(
+        list,
+        e.target.closest('.product-image-list-item-wrapper')
+      );
+      list[tracker.lastIndex]
+        .closest('.product-image-list-item-wrapper')
+        .setAttribute('data-active', 'false');
+      list[tracker.currentIndex]
+        .closest('.product-image-list-item-wrapper')
+        .setAttribute('data-active', 'true');
+      tracker.lastIndex = tracker.currentIndex;
+
+      image.src = this.imageMainSources[tracker.currentIndex];
+    }
+
+    handleOnItemClick(list, image, e, isOverlay) {
+      let tracker = this.getTracker(isOverlay);
+
+      this.updateItemOnClick(tracker, list, image, e);
+    }
+  }
+
+  const imagePicker = new ImagePicker();
 
   const listItems = document.querySelectorAll(`.${listItemClassNames}`);
   const mainImage = document.getElementById(mainImageId);
 
   listItems.forEach((item) => {
     item.addEventListener('click', (e) =>
-      ImagePicker.handleOnItemClick(listItems, mainImage, e, isOverlay)
+      imagePicker.handleOnItemClick(listItems, mainImage, e, isOverlay)
     );
   });
 </script>
