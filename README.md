@@ -78,6 +78,8 @@ So I have already been making a lot of projects that follow similar patterns to 
 
 It was a struggle initially, because I already have experience with some frameworks like Svelte or React, which have more intuitvely reactive components. Astro, however, is all about static pages, and without using islands, can be hard to make reactive components. Well, it was hard at first, at least. I came into it with the wrong mindset. Making reactive components was actually mostly fine as long as I used regular JavaScript concepts. I suppose I was just expecting a more declarative style, rather than the plain JavaScript imperative style.
 
+One of the biggest hurdles I had was getting my logic to work in a built project. Initially, I was trying to seperate my logic by using JavaScript ES6 modules. The problem with that, though, is that I was also using Astro's way to pass properties to my JavaScript, and it turns out that the scripts don't compile correctly with both imports and using properties. I spent a lot of time going back and refactoring everything to work again, and ended up doing some code duplication. I also could not figure out how to switch the images dynamically using Astros built-in image component, and ended up just throwing some of the images in my public folder and just targeting those.
+
 Once I wrapped my head around that it became easier. One thing that became more of a challenge, though, was that I wanted to utilize Astro Collections to make the "add to cart" function work, by adding the product to a collection list and pulling from that using an ID of some sort. That turned out to be more trouble than I initially thought, and figured this project was't structured in such a way that was efficient to do anyway, so I just took a shortcut and set my cart items to always exist, just the button now makes them appear or disappear.
 
 ### Continued development
@@ -85,3 +87,5 @@ Once I wrapped my head around that it became easier. One thing that became more 
 I am not totally satisified with how many "shortcuts" I felt that I took during this project. I only say that because I wanted to utilize collections more. However, the structure of the project made that a bit difficult, considering it was just a single page for a single product. I look forward to using this framework more in other projects that may better befit the use of collections.
 
 Astro can also use components from other frameworks, too. I intentionally limited myself to plain JavaScript in this project, but I want to use React more in future projects.
+
+Overall there is a lot more for me to learn about Astro, and I look forward to working with it more in the future.
