@@ -223,12 +223,6 @@ const normalListItemNames = 'product-item-normal';
       cartEmptyLabel.classList.toggle('hidden');
     }
 
-    function disableCartItemLst() {
-      if (cartEmptyLabel.classList.contains('hidden')) {
-        toggleCartItemList();
-      }
-    }
-
     function enableCartItemList() {
       if (cartItemList.classList.contains('hidden')) {
         toggleCartItemList();
@@ -243,7 +237,7 @@ const normalListItemNames = 'product-item-normal';
     }
 
     function removeFromCart() {
-      setItemQty(0);
+      setItemQty('0');
       updateTotalLabel();
       toggleCartItemList();
     }
