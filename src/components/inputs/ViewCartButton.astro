@@ -40,8 +40,37 @@
   </svg>
 </button>
 
-<script defer type='module'>
-  import initCartButton from '/frontend-mentor-ecommerce-product-page/src/scripts/viewCartButton.mjs';
+<script is:inline type='module'>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cartMenu = document.getElementById('cart-menu');
+    const cartMenuOverlay = document.getElementById('cart-open-overlay');
+    const cartButton = document.getElementById('cart-button');
 
-  initCartButton();
+    let cartOpen = false;
+
+    function openCart() {
+      cartMenu.style.opacity = 1;
+      cartMenu.style.visibility = 'visible';
+      cartMenu.style.pointerEvents = 'all';
+      cartMenuOverlay.style.pointerEvents = 'all';
+      cartOpen = true;
+    }
+
+    function closeCart() {
+      cartMenu.style.opacity = 0;
+      cartMenu.style.visibility = 'hidden';
+      cartMenu.style.pointerEvents = 'none';
+      cartMenuOverlay.style.pointerEvents = 'none';
+      cartOpen = false;
+    }
+
+    function initCartButton() {
+      cartButton.addEventListener('click', () => {
+        cartOpen ? closeCart() : openCart();
+      });
+      cartMenuOverlay.addEventListener('click', closeCart);
+    }
+
+    initCartButton();
+  });
 </script>
